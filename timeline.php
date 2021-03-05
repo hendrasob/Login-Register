@@ -1,4 +1,9 @@
-<?php require_once("auth.php"); ?>
+<?php require_once("auth.php"); 
+
+//define title
+$title = 'Timeline'; 
+
+?>
 
 
 <!DOCTYPE html>
@@ -7,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pesbuk Timeline</title>
+    <title><?=isset($title) ? $title : null;?></title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
@@ -37,7 +42,7 @@
 
             <form action="" method="post" />
                 <div class="form-group">
-                    <textarea class="form-control" placeholder="Apa yang kamu pikirkan?"></textarea>
+                    <textarea class="form-control" placeholder="What are you thinking?"></textarea>
                 </div>
             </form>
 

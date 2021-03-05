@@ -4,7 +4,7 @@ require_once("config.php");
 
 if(isset($_POST['register'])){
 
-    // filter data yang diinputkan
+    // filter the input data
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     // enkripsi password
@@ -12,12 +12,12 @@ if(isset($_POST['register'])){
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 
 
-    // menyiapkan query
+    // set up a query
     $sql = "INSERT INTO users (name, username, email, password) 
             VALUES (:name, :username, :email, :password)";
     $stmt = $db->prepare($sql);
 
-    // bind parameter ke query
+    // bind parameter to query
     $params = array(
         ":name" => $name,
         ":username" => $username,
@@ -25,13 +25,16 @@ if(isset($_POST['register'])){
         ":email" => $email
     );
 
-    // eksekusi query untuk menyimpan ke database
+    // query execution to save to database
     $saved = $stmt->execute($params);
 
-    // jika query simpan berhasil, maka user sudah terdaftar
-    // maka alihkan ke halaman login
+    // if the save query is successful, then the user is registered
+    // then switch to the login page
     if($saved) header("Location: login.php");
 }
+
+// define title
+$title = 'Register'; 
 
 ?>
 
@@ -41,7 +44,7 @@ if(isset($_POST['register'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Pesbuk</title>
+    <title><?=isset($title) ? $title : null;?></title>
 
      <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/sb-admin-2.min.css" />
@@ -64,8 +67,8 @@ if(isset($_POST['register'])){
         <form action="" method="POST">
 
             <div class="form-group">
-                <label for="name">Nama Lengkap</label>
-                <input class="form-control" type="text" name="name" placeholder="Nama kamu" />
+                <label for="name">Full name</label>
+                <input class="form-control" type="text" name="name" placeholder="Your Name" />
             </div>
 
             <div class="form-group">
@@ -75,7 +78,7 @@ if(isset($_POST['register'])){
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" name="email" placeholder="Alamat Email" />
+                <input class="form-control" type="email" name="email" placeholder="Email" />
             </div>
 
             <div class="form-group">
@@ -83,7 +86,7 @@ if(isset($_POST['register'])){
                 <input class="form-control" type="password" name="password" placeholder="Password" />
             </div>
 
-            <input type="submit" class="btn btn-success btn-block" name="register" value="Daftar" />
+            <input type="submit" class="btn btn-success btn-block" name="register" value="Register" />
 
         </form>
                                     <hr>

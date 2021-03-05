@@ -10,7 +10,7 @@ if(isset($_POST['login'])){
     $sql = "SELECT * FROM users WHERE username=:username OR email=:email";
     $stmt = $db->prepare($sql);
     
-    // bind parameter ke query
+    // bind parameter to query
     $params = array(
         ":username" => $username,
         ":email" => $username
@@ -20,18 +20,22 @@ if(isset($_POST['login'])){
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // jika user terdaftar
+    // if the user is registered
     if($user){
-        // verifikasi password
+        // password verification
         if(password_verify($password, $user["password"])){
-            // buat Session
+            // create a Session
             session_start();
             $_SESSION["user"] = $user;
-            // login sukses, alihkan ke halaman timeline
+            // login is successful, redirect to the timeline page
             header("Location: timeline.php");
         }
     }
 }
+
+// define title
+$title = 'Login'; 
+
 ?>
 
 
@@ -41,7 +45,7 @@ if(isset($_POST['login'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Pesbuk</title>
+    <title><?=isset($title) ? $title : null;?></title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/sb-admin-2.min.css" />
@@ -70,7 +74,7 @@ if(isset($_POST['login'])){
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input class="form-control" type="text" name="username" placeholder="Username atau email" />
+                <input class="form-control" type="text" name="username" placeholder="Username or email" />
             </div>
 
 
@@ -79,7 +83,7 @@ if(isset($_POST['login'])){
                 <input class="form-control" type="password" name="password" placeholder="Password" />
             </div>
 
-            <input type="submit" class="btn btn-success btn-block" name="login" value="Masuk" />
+            <input type="submit" class="btn btn-success btn-block" name="login" value="Login" />
 
         </form>
                                     <hr>
