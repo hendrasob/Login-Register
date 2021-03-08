@@ -1,7 +1,7 @@
 <?php
 
 // define title
-$title = 'Welcome'; 
+$title = 'Welcome | @Hendrasob'; 
 
 ?>
 

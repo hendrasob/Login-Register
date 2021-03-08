@@ -34,7 +34,7 @@ if(isset($_POST['register'])){
 }
 
 // define title
-$title = 'Register'; 
+$title = 'Register | @Hendrasob'; 
 
 ?>
 

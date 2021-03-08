@@ -1,7 +1,7 @@
 <?php require_once("auth.php"); 
 
 //define title
-$title = 'Timeline'; 
+$title = 'Timeline | @Hendrasob'; 
 
 ?>
 
