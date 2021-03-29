@@ -1,6 +1,7 @@
 <!-- markdownlint-disable MD033 MD041 -->
 
 <div align="center">
+<img width="100px" src="https://github.com/hendrasob/Login-Register/blob/master/assets/github.gif" align="center" />
 
 # Login & Register
 <a href="https://github.com/hendrasob/Login-Register/search?l=php"><img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="GitHub" /></a>
